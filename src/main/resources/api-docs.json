@@ -13,8 +13,8 @@
   ],
   "tags": [
     {
-      "name": "Unterstützende Operationen",
-      "description": "Ressourcen der Unterstützende Operationen"
+      "name": "Unterstuetzende Operationen",
+      "description": "Ressourcen der Unterstuetzende Operationen"
     },
     {
       "name": "USt-IdNr. Bestaetigungsabfrage",
@@ -27,8 +27,8 @@
         "tags": [
           "USt-IdNr. Bestaetigungsabfrage"
         ],
-        "summary": "Abfrage der Gültigkeit einer USt-IdNr. aus einem Mitgliedstaat der EU. ",
-        "description": "Es gibt die Möglichkeit der einfachen und qualifizierten Bestätigungsabfrage<br>\n<ul>\n    <li>Die <b>einfache Bestätigungsabfrage</b> gibt nur Gewissheit über die Gültigkeit einer USt-IdNr. Sie wird ausgeführt, wenn die Felder <i>anfragendeUstid</i> und <i>angefragteUstid</i> des Request Body besetzt, aber <i>firmenname</i> oder <i>ort</i> unbesetzt sind. In der Bestätigungsantwort wird der <i>anfrageZeitpunkt</i> und die Gültigkeitsinformation im <i>status</i> zurückgeliefert. Im Fall von Ungültigkeit werden Detailinformationen ggfs. auch über die Felder <i>gueltigAb</i> und <i>gueltigBis</i> geliefert.<br>\n    </li>\n        <li> Die <b>qualifizierte Bestätigungsbfrage</b> verifiziert die Korrektheit der Firmendaten. Sie wird ausgeführt, wenn zu den Feldern <i>anfragendeUstid</i> und <i>angefragteUstid</i> im Request Body auch mindestens <i>firmenname</i> und <i>ort</i> besetzt sind. Die zusätzlichen Felder <i>strasse</i> und <i>plz</i> sind optional. In der Bestätigungsantwort werden die selben Rückgabewerte wie bei der einfachen Bestätigungsabfrage geliefert und im Fall der Gültigkeit zusätzlich die Vergleichsergebnisse erg... zu den besetzten Feldern der Firmendaten aus dem Request Body. Die Vergleichsergebnisse werden durch Buchstaben wie folgt ausgedrückt:\n        <ul>\n            <li>A = Die Angaben zu <i>angefragteUstid</i> stimmen mit den registrierten Daten überein.</li>\n            <li>B = Die Angaben zu <i>angefragteUstid</i> stimmen mit den registrierten Daten nicht überein.</li>\n            <li>C = Die Angaben zu <i>angefragteUstid</i> wurden nicht angefragt.</li>\n            <li>D = Die Angaben zu <i>angefragteUstid</i> wurden vom EU-Mitgliedsstaat nicht mitgeteilt.</li>\n        </ul>\n    </li>\n</ul>\n<ul>\n    <li>&#128161; Mit folgenden Werten können Testaufrufe mit Beispiel USt-IdNr erfolgen:\n        <ul>\n            <u>einfache Bestätigungsanfrage</u>:<br>{<br><strong>&nbsp;\"anfragendeUstid\":\"DE123456789\",<br>&nbsp;\"angefragteUstid\":\"ATU12345678\"</strong><br>}\n        </ul>\n        <ul>\n            <u>qualifizierte Bestätigungsanfrage</u>:<br>{<br><strong>&nbsp;\"anfragendeUstid\":\"DE123456789\",<br>&nbsp;\"angefragteUstid\":\"ATU12345678\",\"<br>&nbsp;\"firmenname\":\"Musterhaus GmbH &amp; Co KG\",<br>&nbsp;\"strasse\":\"Musterstrasse 22\",<br>&nbsp;\"plz\":\"12345\",<br>&nbsp;\"ort\":\"musterort\"</strong><br>}\n        </ul>\n    </li>\n</ul>",
+        "summary": "Abfrage der Gueltigkeit einer USt-IdNr. aus einem Mitgliedstaat der EU. ",
+        "description": "Es gibt die Möglichkeit der einfachen und qualifizierten Bestätigungsabfrage<br>\n<ul>\n    <li>Die <b>einfache Bestätigungsabfrage</b> gibt nur Gewissheit ueber die Gueltigkeit einer USt-IdNr. Sie wird ausgefuehrt, wenn die Felder <i>anfragendeUstid</i> und <i>angefragteUstid</i> des Request Body besetzt, aber <i>firmenname</i> oder <i>ort</i> unbesetzt sind. In der Bestätigungsantwort wird der <i>anfrageZeitpunkt</i> und die Gueltigkeitsinformation im <i>status</i> zurueckgeliefert. Im Fall von Ungueltigkeit werden Detailinformationen ggfs. auch ueber die Felder <i>gueltigAb</i> und <i>gueltigBis</i> geliefert.<br>\n    </li>\n        <li> Die <b>qualifizierte Bestätigungsbfrage</b> verifiziert die Korrektheit der Firmendaten. Sie wird ausgefuehrt, wenn zu den Feldern <i>anfragendeUstid</i> und <i>angefragteUstid</i> im Request Body auch mindestens <i>firmenname</i> und <i>ort</i> besetzt sind. Die zusätzlichen Felder <i>strasse</i> und <i>plz</i> sind optional. In der Bestätigungsantwort werden die selben Rueckgabewerte wie bei der einfachen Bestätigungsabfrage geliefert und im Fall der Gueltigkeit zusätzlich die Vergleichsergebnisse erg... zu den besetzten Feldern der Firmendaten aus dem Request Body. Die Vergleichsergebnisse werden durch Buchstaben wie folgt ausgedrueckt:\n        <ul>\n            <li>A = Die Angaben zu <i>angefragteUstid</i> stimmen mit den registrierten Daten ueberein.</li>\n            <li>B = Die Angaben zu <i>angefragteUstid</i> stimmen mit den registrierten Daten nicht ueberein.</li>\n            <li>C = Die Angaben zu <i>angefragteUstid</i> wurden nicht angefragt.</li>\n            <li>D = Die Angaben zu <i>angefragteUstid</i> wurden vom EU-Mitgliedsstaat nicht mitgeteilt.</li>\n        </ul>\n    </li>\n</ul>\n<ul>\n    <li>&#128161; Mit folgenden Werten können Testaufrufe mit Beispiel USt-IdNr erfolgen:\n        <ul>\n            <u>einfache Bestätigungsanfrage</u>:<br>{<br><strong>&nbsp;\"anfragendeUstid\":\"DE123456789\",<br>&nbsp;\"angefragteUstid\":\"ATU12345678\"</strong><br>}\n        </ul>\n        <ul>\n            <u>qualifizierte Bestätigungsanfrage</u>:<br>{<br><strong>&nbsp;\"anfragendeUstid\":\"DE123456789\",<br>&nbsp;\"angefragteUstid\":\"ATU12345678\",\"<br>&nbsp;\"firmenname\":\"Musterhaus GmbH &amp; Co KG\",<br>&nbsp;\"strasse\":\"Musterstrasse 22\",<br>&nbsp;\"plz\":\"12345\",<br>&nbsp;\"ort\":\"musterort\"</strong><br>}\n        </ul>\n    </li>\n</ul>",
         "operationId": "abfrageV1",
         "requestBody": {
           "content": {
@@ -42,7 +42,7 @@
         },
         "responses": {
           "200": {
-            "description": "status =\n<ul>\n    <li> <b>evatr-0000:</b> Die angefragte Ust-IdNr. ist zum Anfragezeitpunkt gültig.</li>\n    <li> <b>evatr-2002:</b> Die angefragte USt-IdNr. ist zum Anfragezeitpunkt nicht gültig. Sie ist erst gültig ab dem Datum im Feld gueltigAb.</li>\n    <li> <b>evatr-2006:</b> Die angefragte Ust-IdNr. ist zum Anfragezeitpunkt nicht gültig. Sie war gültig im Zeitraum, der durch die Werte in den Feldern gueltigAb und gueltigBis beschrieben ist.</li>\n    <li> <b>evatr-2008:</b> Die angefragte Ust-IdNr. ist zum Anfragezeitpunkt gültig. Für die qualifizierte Bestätigungsanfrage liegt einer Besonderheit vor. Für Rückfragen wenden Sie sich an das BZSt.</li>\n</ul>",
+            "description": "status =\n<ul>\n    <li> <b>evatr-0000:</b> Die angefragte Ust-IdNr. ist zum Anfragezeitpunkt gueltig.</li>\n    <li> <b>evatr-2002:</b> Die angefragte USt-IdNr. ist zum Anfragezeitpunkt nicht gueltig. Sie ist erst gueltig ab dem Datum im Feld gueltigAb.</li>\n    <li> <b>evatr-2006:</b> Die angefragte Ust-IdNr. ist zum Anfragezeitpunkt nicht gueltig. Sie war gueltig im Zeitraum, der durch die Werte in den Feldern gueltigAb und gueltigBis beschrieben ist.</li>\n    <li> <b>evatr-2008:</b> Die angefragte Ust-IdNr. ist zum Anfragezeitpunkt gueltig. Fuer die qualifizierte Bestätigungsanfrage liegt einer Besonderheit vor. Fuer Rueckfragen wenden Sie sich an das BZSt.</li>\n</ul>",
             "content": {
               "application/json": {
                 "schema": {
@@ -52,7 +52,7 @@
             }
           },
           "400": {
-            "description": "status =\n<ul>\n    <li> <b>evatr-0002:</b> Mindestens eins der Pflichtfelder ist nicht besetzt.</li>\n    <li> <b>evatr-0004:</b> Die anfragende DE Ust-IdNr. ist syntaktisch falsch. Sie passt nicht in das deutsche Erzeugungsschema.</li>\n    <li> <b>evatr-0005:</b> Die angegebene angefragte Ust-IdNr. ist syntaktisch falsch.</li>\n    <li> <b>evatr-0008:</b> Die maximale Anzahl von qualifizierten Bestätigungsabfragen für diese Session wurde erreicht. Bitte starten Sie erneut mit einer einfachen Bestätigungsabfrage.</li>\n    <li> <b>evatr-0012:</b> Die angefrage USt-IdNr. ist syntaktisch falsch. Sie passt nicht in das Erzeugungsschema.</li>\n    <li> <b>evatr-2003:</b> Das angegebene Länderkennzeichen der angefragten USt-IdNr. ist nicht gültig.</li>\n</ul>",
+            "description": "status =\n<ul>\n    <li> <b>evatr-0002:</b> Mindestens eins der Pflichtfelder ist nicht besetzt.</li>\n    <li> <b>evatr-0004:</b> Die anfragende DE Ust-IdNr. ist syntaktisch falsch. Sie passt nicht in das deutsche Erzeugungsschema.</li>\n    <li> <b>evatr-0005:</b> Die angegebene angefragte Ust-IdNr. ist syntaktisch falsch.</li>\n    <li> <b>evatr-0008:</b> Die maximale Anzahl von qualifizierten Bestätigungsabfragen fuer diese Session wurde erreicht. Bitte starten Sie erneut mit einer einfachen Bestätigungsabfrage.</li>\n    <li> <b>evatr-0012:</b> Die angefrage USt-IdNr. ist syntaktisch falsch. Sie passt nicht in das Erzeugungsschema.</li>\n    <li> <b>evatr-2003:</b> Das angegebene Länderkennzeichen der angefragten USt-IdNr. ist nicht gueltig.</li>\n</ul>",
             "content": {
               "application/json": {}
             }
@@ -64,7 +64,7 @@
             }
           },
           "404": {
-            "description": "status =\n<ul>\n    <li> <b>evatr-2001:</b> Die angefragte USt-IdNr. ist zum Anfragezeitpunkt nicht vergeben.</li>\n    <li> <b>evatr-2005:</b> Die angegebene eigene DE Ust-IdNr. ist zum Anfragezeitpunkt nicht gültig.</li>\n</ul>",
+            "description": "status =\n<ul>\n    <li> <b>evatr-2001:</b> Die angefragte USt-IdNr. ist zum Anfragezeitpunkt nicht vergeben.</li>\n    <li> <b>evatr-2005:</b> Die angegebene eigene DE Ust-IdNr. ist zum Anfragezeitpunkt nicht gueltig.</li>\n</ul>",
             "content": {
               "application/json": {}
             }
@@ -87,14 +87,14 @@
     "/v1/info/statusmeldungen": {
       "get": {
         "tags": [
-          "Unterstützende Operationen"
+          "Unterstuetzende Operationen"
         ],
         "summary": "Abfrage der Meldungstexte zu den Status Codes (evatr-*) ",
-        "description": "Zu jedem evatr-* Code aus dem Feld <i>status</i> wird ein Beschreibungstext in Meldung zurückgeliefert, der vom Aufrufer z.B. in einer GUI angezeigt werden kann.",
+        "description": "Zu jedem evatr-* Code aus dem Feld <i>status</i> wird ein Beschreibungstext in Meldung zurueckgeliefert, der vom Aufrufer z.B. in einer GUI angezeigt werden kann.",
         "operationId": "statusmeldungenV1",
         "responses": {
           "200": {
-            "description": "Die Liste der Meldungstexte zu den Status Codes wird in der Response zurück geliefert.",
+            "description": "Die Liste der Meldungstexte zu den Status Codes wird in der Response zurueck geliefert.",
             "content": {
               "application/json": {
                 "schema": {
@@ -109,14 +109,14 @@
     "/v1/info/eu_mitgliedstaaten": {
       "get": {
         "tags": [
-          "Unterstützende Operationen"
+          "Unterstuetzende Operationen"
         ],
-        "summary": "Abfrage einer Liste der EU Mitgliedstaaten und ihrer Verfügbarkeit",
-        "description": "Zu jedem Mitgliedstaat wird der Name, das Länderkennzeichen und die aktuelle Verfügbarkeit des VIES-Systems im Mitgliedstaat zurückgeliefert.",
+        "summary": "Abfrage einer Liste der EU Mitgliedstaaten und ihrer Verfuegbarkeit",
+        "description": "Zu jedem Mitgliedstaat wird der Name, das Länderkennzeichen und die aktuelle Verfuegbarkeit des VIES-Systems im Mitgliedstaat zurueckgeliefert.",
         "operationId": "euMitgliedstaatenStatusV1",
         "responses": {
           "200": {
-            "description": "Die Liste alle Mitgliedstaaten mit Namen, Länderkennzeichen und Verfügbarkeit wird in der Response zurück geliefert.",
+            "description": "Die Liste alle Mitgliedstaaten mit Namen, Länderkennzeichen und Verfuegbarkeit wird in der Response zurueck geliefert.",
             "content": {
               "application/json": {
                 "schema": {
