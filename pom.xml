@@ -85,6 +85,34 @@
         <sourceDirectory>target/generated-sources/openapi/src/main/java</sourceDirectory>
         <plugins>
             <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>7.20.0</version>
+                <configuration>
+                    <generatorName>java</generatorName>
+                    <modelNameSuffix>Dto</modelNameSuffix>
+                    <configOptions>
+                        <library>okhttp-gson</library>
+                        <dateLibrary>java8</dateLibrary>
+                        <java8>true</java8>
+                        <apiPackage>com.amihaiemil.web.openapi.bzst-auslaendische-ust-idnrn</apiPackage>
+                        <modelPackage>com.amihaiemil.web.openapi.bzst-auslaendische-ust-idnrn.model</modelPackage>
+                        <invokerPackage>com.amihaiemil.web.openapi.bzst-auslaendische-ust-idnrn.invoker</invokerPackage>
+                    </configOptions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>bzst-auslaendische-ust-idnrn-api-docs</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/api-docs.json</inputSpec>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.1</version>
                 <configuration>
@@ -116,41 +144,6 @@
         </plugins>
     </build>
     <profiles>
-        <profile>
-            <id>genOpenApiClient</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.openapitools</groupId>
-                        <artifactId>openapi-generator-maven-plugin</artifactId>
-                        <version>7.20.0</version>
-                        <configuration>
-                            <generatorName>java</generatorName>
-                            <modelNameSuffix>Dto</modelNameSuffix>
-                            <configOptions>
-                                <library>okhttp-gson</library>
-                                <dateLibrary>java8</dateLibrary>
-                                <java8>true</java8>
-                                <apiPackage>com.amihaiemil.web.openapi.bzst-auslaendische-ust-idnrn</apiPackage>
-                                <modelPackage>com.amihaiemil.web.openapi.bzst-auslaendische-ust-idnrn.model</modelPackage>
-                                <invokerPackage>com.amihaiemil.web.openapi.bzst-auslaendische-ust-idnrn.invoker</invokerPackage>
-                            </configOptions>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>bzst-auslaendische-ust-idnrn-api-docs</id>
-                                <goals>
-                                    <goal>generate</goal>
-                                </goals>
-                                <configuration>
-                                    <inputSpec>${project.basedir}/src/main/resources/api-docs.json</inputSpec>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
         <profile>
             <id>genDocs</id>
             <build>
