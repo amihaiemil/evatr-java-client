@@ -2,16 +2,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.amihaiemil.web</groupId>
-    <artifactId>bzst-auslaendische-ust-idnrn-java-client</artifactId>
+    <artifactId>evatr-java-client</artifactId>
     <version>8.0.1-SNAPSHOT</version><!--rrv-sed-flag-->
     <packaging>jar</packaging>
     <properties>
         <jackson.version>2.19.2</jackson.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <name>bzst-auslaendische-ust-idnrn-java-client</name>
+    <name>evatr-java-client</name>
     <description>Java client for https://www.bzst.de/DE/Unternehmen/Identifikationsnummern/Umsatzsteuer-Identifikationsnummer/AuslaendischeUSt-IdNr/auslaendische_ust_idnr_node.html</description>
-    <url>https://www.github.com/amihaiemil/bzst-auslaendische-ust-idnrn</url>
+    <url>https://www.github.com/amihaiemil/evatr</url>
     <licenses>
         <license>
             <name>The BSD 3-Clause Licence</name>
@@ -27,9 +27,9 @@
         </developer>
     </developers>
     <scm>
-        <url>https://github.com/amihaiemil/bzst-auslaendische-ust-idnrn</url>
-        <connection>scm:git:git://github.com/amihaiemil/bzst-auslaendische-ust-idnrn.git</connection>
-        <developerConnection>scm:git:git@github.com:amihaiemil/bzst-auslaendische-ust-idnrn.git</developerConnection>
+        <url>https://github.com/amihaiemil/evatr</url>
+        <connection>scm:git:git://github.com/amihaiemil/evatr.git</connection>
+        <developerConnection>scm:git:git@github.com:amihaiemil/evatr.git</developerConnection>
     </scm>
     <dependencies>
         <dependency>
@@ -75,6 +75,11 @@
           <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.3</version>
+        </dependency>
+        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
             <version>1.3</version>
@@ -95,14 +100,14 @@
                         <library>okhttp-gson</library>
                         <dateLibrary>java8</dateLibrary>
                         <java8>true</java8>
-                        <apiPackage>com.amihaiemil.web.openapi.bzst-auslaendische-ust-idnrn</apiPackage>
-                        <modelPackage>com.amihaiemil.web.openapi.bzst-auslaendische-ust-idnrn.model</modelPackage>
-                        <invokerPackage>com.amihaiemil.web.openapi.bzst-auslaendische-ust-idnrn.invoker</invokerPackage>
+                        <apiPackage>com.amihaiemil.web.openapi.evatr</apiPackage>
+                        <modelPackage>com.amihaiemil.web.openapi.evatr.model</modelPackage>
+                        <invokerPackage>com.amihaiemil.web.openapi.evatr.invoker</invokerPackage>
                     </configOptions>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>bzst-auslaendische-ust-idnrn-api-docs</id>
+                        <id>evatr-api-docs</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -125,7 +130,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <finalName>bzst-auslaendische-ust-idnrn-java-client-${project.version}</finalName>
+                    <finalName>evatr-java-client-${project.version}</finalName>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
@@ -262,7 +267,7 @@
                 <repository>
                     <id>github</id>
                     <name>GitHub amihaiemil Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/amihaiemil/bzst-auslaendische-ust-idnrn</url>
+                    <url>https://maven.pkg.github.com/amihaiemil/evatr</url>
                 </repository>
             </distributionManagement>
         </profile>

@@ -98,7 +98,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Statusmeldung"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Statusmeldung"
+                  }
                 }
               }
             }
@@ -120,7 +123,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EUMitgliedstaat"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EUMitgliedstaat"
+                  }
                 }
               }
             }
@@ -170,7 +176,8 @@
             "description": "Technische ID zur Bestaetigungsanfrage"
           },
           "anfrageZeitpunkt": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "gueltigAb": {
             "type": "string"
@@ -197,7 +204,6 @@
       },
       "Statusmeldung": {
         "required": [
-          "httpcode",
           "kategorie",
           "meldung",
           "status"
