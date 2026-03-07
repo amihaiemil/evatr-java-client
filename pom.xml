@@ -27,9 +27,9 @@
         </developer>
     </developers>
     <scm>
-        <url>https://github.com/amihaiemil/evatr</url>
-        <connection>scm:git:git://github.com/amihaiemil/evatr.git</connection>
-        <developerConnection>scm:git:git@github.com:amihaiemil/evatr.git</developerConnection>
+        <url>https://github.com/amihaiemil/evatr-java-client</url>
+        <connection>scm:git:git://github.com/amihaiemil/evatr-java-client.git</connection>
+        <developerConnection>scm:git:git@github.com:amihaiemil/evatr-java-client.git</developerConnection>
     </scm>
     <dependencies>
         <dependency>
@@ -266,7 +266,7 @@
                 <repository>
                     <id>github</id>
                     <name>GitHub amihaiemil Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/amihaiemil/evatr</url>
+                    <url>https://maven.pkg.github.com/amihaiemil/evatr-java-client</url>
                 </repository>
             </distributionManagement>
         </profile>
