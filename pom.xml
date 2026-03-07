@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.amihaiemil.web</groupId>
     <artifactId>evatr-java-client</artifactId>
-    <version>0.0.3-SNAPSHOT</version><!--rrv-sed-flag-->
+    <version>0.0.4-SNAPSHOT</version><!--rrv-sed-flag-->
     <packaging>jar</packaging>
     <properties>
         <jackson.version>2.19.2</jackson.version>
