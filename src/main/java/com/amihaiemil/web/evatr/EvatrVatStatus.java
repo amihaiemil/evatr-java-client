@@ -28,23 +28,11 @@
 package com.amihaiemil.web.evatr;
 
 /**
- * Evatr API.
+ * Status of a VAT Number.
  * @author Mihai Andronache (amihaiemil@gmail.com)
  * @version $Id$
  * @since 0.0.1
  */
-public interface EvatrApi {
-
-    /**
-     * Entry point for the Support API of Evatr. You may need it
-     * for debugging/logging purposes.
-     * @return {@link EvatrSupportApi}.
-     */
-    EvatrSupportApi supportApi();
-
-    /**
-     * Entry point for the VAT API of Evatr.
-     * @return {@link EvatrVatApi}.
-     */
-    EvatrVatApi vatApi();
+public interface EvatrVatStatus {
+    String id();
 }

@@ -27,24 +27,22 @@
  */
 package com.amihaiemil.web.evatr;
 
+import java.io.IOException;
+import java.util.List;
+
 /**
- * Evatr API.
+ * Evatr VAT API. It exposes endpoints for working with VAT ids/numbers.
  * @author Mihai Andronache (amihaiemil@gmail.com)
  * @version $Id$
  * @since 0.0.1
  */
-public interface EvatrApi {
+public interface EvatrVatApi {
 
     /**
-     * Entry point for the Support API of Evatr. You may need it
-     * for debugging/logging purposes.
-     * @return {@link EvatrSupportApi}.
+     * Validates an external VAT Number, in relation to Germany.
+     * @param callerVatId - VAT Number of the caller. Must be a German VAT Number.
+     * @param vatId - VAT Number to be verified. Must NOT be a German VAT Number.
+     * @throws IOException
      */
-    EvatrSupportApi supportApi();
-
-    /**
-     * Entry point for the VAT API of Evatr.
-     * @return {@link EvatrVatApi}.
-     */
-    EvatrVatApi vatApi();
+    void verifyExternalVatNumber(String callerVatId, String vatId) throws IOException;
 }

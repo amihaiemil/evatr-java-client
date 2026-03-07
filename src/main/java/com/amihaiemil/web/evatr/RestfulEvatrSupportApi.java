@@ -42,6 +42,10 @@ import java.util.stream.Collectors;
  * @since 0.0.1
  */
 final class RestfulEvatrSupportApi implements EvatrSupportApi {
+
+    /**
+     * OpenApi-generated client for the Support API.
+     */
     private final UnterstuetzendeOperationenApi utilApi = new UnterstuetzendeOperationenApi();
 
     @Override

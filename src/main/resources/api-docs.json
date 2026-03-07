@@ -180,10 +180,12 @@
             "format": "date-time"
           },
           "gueltigAb": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "gueltigBis": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "status": {
             "type": "string"

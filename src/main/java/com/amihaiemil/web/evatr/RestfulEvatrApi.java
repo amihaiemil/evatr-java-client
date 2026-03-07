@@ -35,9 +35,15 @@ package com.amihaiemil.web.evatr;
  */
 public final class RestfulEvatrApi implements EvatrApi {
     private final EvatrSupportApi supportApi = new RestfulEvatrSupportApi();
+    private final EvatrVatApi vatApi = new RestfulEvatrVatApi(this.supportApi);
 
     @Override
     public EvatrSupportApi supportApi() {
         return this.supportApi;
+    }
+
+    @Override
+    public EvatrVatApi vatApi() {
+        return this.vatApi;
     }
 }

@@ -68,4 +68,9 @@ public final class RestfulEvatrApiTestCase {
         );
     }
 
+    @Test
+    public void verifiesVatNumberCorrectly() throws IOException {
+        new RestfulEvatrApi().vatApi().verifyExternalVatNumber("DE123456789","ATU12345678");
+    }
+
 }

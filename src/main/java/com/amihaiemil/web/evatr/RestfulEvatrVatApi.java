@@ -27,24 +27,42 @@
  */
 package com.amihaiemil.web.evatr;
 
+import com.amihaiemil.web.openapi.evatr.UstIdNrBestaetigungsabfrageApi;
+import com.amihaiemil.web.openapi.evatr.invoker.ApiException;
+import com.amihaiemil.web.openapi.evatr.model.BestaetigungsabfrageDto;
+import com.amihaiemil.web.openapi.evatr.model.BestaetigungsantwortDto;
+
+import java.io.IOException;
+
 /**
- * Evatr API.
+ * The VAT API of Evatr. This class is intentionally package protected.
  * @author Mihai Andronache (amihaiemil@gmail.com)
  * @version $Id$
  * @since 0.0.1
  */
-public interface EvatrApi {
+final class RestfulEvatrVatApi implements EvatrVatApi {
 
     /**
-     * Entry point for the Support API of Evatr. You may need it
-     * for debugging/logging purposes.
-     * @return {@link EvatrSupportApi}.
+     * Support API to fetch and aggregate response messages, countries etc.
      */
-    EvatrSupportApi supportApi();
+    private final EvatrSupportApi supportApi;
 
     /**
-     * Entry point for the VAT API of Evatr.
-     * @return {@link EvatrVatApi}.
+     * OpenApi-generated client for the VAT API.
      */
-    EvatrVatApi vatApi();
+    private final UstIdNrBestaetigungsabfrageApi ustIdApi = new UstIdNrBestaetigungsabfrageApi();
+
+    RestfulEvatrVatApi(final EvatrSupportApi supportApi) {
+        this.supportApi = supportApi;
+    }
+
+    @Override
+    public void verifyExternalVatNumber(String caller, String toVerify) throws IOException {
+        try {
+            final BestaetigungsantwortDto antwort = this.ustIdApi.abfrageV1(new BestaetigungsabfrageDto().anfragendeUstid(caller).angefragteUstid(toVerify));
+            System.out.println(antwort);
+        } catch (final ApiException e) {
+            throw new IOException("ApiException when calling /v1/abfrage", e);
+        }
+    }
 }

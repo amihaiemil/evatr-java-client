@@ -87,7 +87,6 @@
         </dependency>
     </dependencies>
     <build>
-        <sourceDirectory>target/generated-sources/openapi/src/main/java</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.openapitools</groupId>
