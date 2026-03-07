@@ -33,6 +33,7 @@ import com.amihaiemil.web.openapi.evatr.model.BestaetigungsabfrageDto;
 import com.amihaiemil.web.openapi.evatr.model.BestaetigungsantwortDto;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * The VAT API of Evatr. This class is intentionally package protected.
@@ -57,10 +58,11 @@ final class RestfulEvatrVatApi implements EvatrVatApi {
     }
 
     @Override
-    public void verifyExternalVatNumber(String caller, String toVerify) throws IOException {
+    public EvatrVatStatus verifyExternalVatNumber(final String caller, final String toVerify) throws IOException {
+        final List<EvatrMessage> messages = this.supportApi.evatrMessages();
         try {
             final BestaetigungsantwortDto antwort = this.ustIdApi.abfrageV1(new BestaetigungsabfrageDto().anfragendeUstid(caller).angefragteUstid(toVerify));
-            System.out.println(antwort);
+            return new EvatrVatStatusResponse(antwort, messages);
         } catch (final ApiException e) {
             throw new IOException("ApiException when calling /v1/abfrage", e);
         }

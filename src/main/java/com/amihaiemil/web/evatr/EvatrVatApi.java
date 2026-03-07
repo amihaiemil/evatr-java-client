@@ -40,9 +40,9 @@ public interface EvatrVatApi {
 
     /**
      * Validates an external VAT Number, in relation to Germany.
-     * @param callerVatId - VAT Number of the caller. Must be a German VAT Number.
-     * @param vatId - VAT Number to be verified. Must NOT be a German VAT Number.
-     * @throws IOException
+     * @param callerVatId VAT Number of the caller. Must be a German VAT Number.
+     * @param vatId VAT Number to be verified. Must NOT be a German VAT Number.
+     * @throws IOException If something goes wrong with the HTTP Call.
      */
-    void verifyExternalVatNumber(String callerVatId, String vatId) throws IOException;
+    EvatrVatStatus verifyExternalVatNumber(final String callerVatId, final String vatId) throws IOException;
 }

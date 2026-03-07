@@ -70,7 +70,50 @@ public final class RestfulEvatrApiTestCase {
 
     @Test
     public void verifiesVatNumberCorrectly() throws IOException {
-        new RestfulEvatrApi().vatApi().verifyExternalVatNumber("DE123456789","ATU12345678");
+        EvatrVatStatus resp = new RestfulEvatrApi().vatApi().verifyExternalVatNumber("DE123456789","ATU12345678");
+
+        MatcherAssert.assertThat(
+            resp.technicalStatusCode(),
+            Matchers.equalTo("evatr-0000")
+        );
+        MatcherAssert.assertThat(
+            resp.message(),
+            Matchers.equalTo(
+            "Die angefragte Ust-IdNr. ist zum Anfragezeitpunkt gültig."
+            )
+        );
+        MatcherAssert.assertThat(
+            resp.technicalId(),
+            Matchers.not(Matchers.isEmptyOrNullString())
+        );
+        MatcherAssert.assertThat(
+            resp.callTimeStamp(),
+            Matchers.notNullValue()
+        );
+        MatcherAssert.assertThat(
+            resp.validFrom(),
+            Matchers.nullValue()
+        );
+        MatcherAssert.assertThat(
+            resp.validTo(),
+            Matchers.nullValue()
+        );
+        MatcherAssert.assertThat(
+            resp.companyName(),
+            Matchers.isEmptyString()
+        );
+        MatcherAssert.assertThat(
+            resp.companyCity(),
+            Matchers.isEmptyString()
+        );
+        MatcherAssert.assertThat(
+            resp.companyStreet(),
+            Matchers.isEmptyString()
+        );
+        MatcherAssert.assertThat(
+            resp.companyZipCode(),
+            Matchers.isEmptyString()
+        );
     }
 
 }

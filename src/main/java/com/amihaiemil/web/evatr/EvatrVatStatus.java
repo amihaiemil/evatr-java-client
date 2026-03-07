@@ -27,6 +27,8 @@
  */
 package com.amihaiemil.web.evatr;
 
+import java.time.OffsetDateTime;
+
 /**
  * Status of a VAT Number.
  * @author Mihai Andronache (amihaiemil@gmail.com)
@@ -34,5 +36,65 @@ package com.amihaiemil.web.evatr;
  * @since 0.0.1
  */
 public interface EvatrVatStatus {
-    String id();
+
+    /**
+     * Technical ID of the response from Evatr. You may need it for debugging or logging purposes.
+     * @return String.
+     */
+    String technicalId();
+
+    /**
+     * Technical Status-Code of the response from Evatr.
+     * The actual text is in the "message" attribute.
+     * @return String.
+     */
+    String technicalStatusCode();
+
+    /**
+     * Timestamp when the call to Evatr was made.
+     * @return
+     */
+    OffsetDateTime callTimeStamp();
+
+    /**
+     * Timestamp from which the VAT Number is valid.
+     * @return OffsetDateTime.
+     */
+    OffsetDateTime validFrom();
+
+    /**
+     * Timestamp until the VAT Number is valid.
+     * @return OffsetDateTime.
+     */
+    OffsetDateTime validTo();
+
+    /**
+     * Message text from Evatr.
+     * @return String.
+     */
+    String message();
+
+    /**
+     * The name of the verified company.
+     * @return String.
+     */
+    String companyName();
+
+    /**
+     * The street of the verified company.
+     * @return String.
+     */
+    String companyStreet();
+
+    /**
+     * The city of the verified company.
+     * @return String.
+     */
+    String companyCity();
+
+    /**
+     * The zipCode of the verified company.
+     * @return String.
+     */
+    String companyZipCode();
 }

@@ -85,6 +85,11 @@ final class RestfulEvatrSupportApi implements EvatrSupportApi {
                     public String message() {
                         return meldung.getMeldung();
                     }
+
+                    @Override
+                    public String toString() {
+                        return statusCode() + ": \"" + message() + "\"";
+                    }
                 }
             ).collect(Collectors.toList());
         } catch (final ApiException e) {
