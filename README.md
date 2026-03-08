@@ -1,6 +1,6 @@
 # eVatR Client library for Java
 
-[![DevOps By Rultor.com](http://www.rultor.com/b/jvmqueen/queen-of-java)](http://www.rultor.com/p/jvmqueen/queen-of-java)
+[![DevOps By Rultor.com](http://www.rultor.com/b/amihaiemil/evatr-java-client)](http://www.rultor.com/p/amihaiemil/evatr-java-client)
 [![We recommend IntelliJ IDEA](http://amihaiemil.github.io/images/intellij-idea-recommend.svg)](https://www.jetbrains.com/idea/)
 
 
