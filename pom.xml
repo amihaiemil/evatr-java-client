@@ -6,8 +6,8 @@
     <version>0.0.4-SNAPSHOT</version><!--rrv-sed-flag-->
     <packaging>jar</packaging>
     <properties>
-        <jackson.version>2.19.2</jackson.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <okhttp3.version>4.12.0</okhttp3.version>
     </properties>
     <name>evatr-java-client</name>
     <description>Java client for https://www.bzst.de/DE/Unternehmen/Identifikationsnummern/Umsatzsteuer-Identifikationsnummer/AuslaendischeUSt-IdNr/auslaendische_ust_idnr_node.html</description>
@@ -35,12 +35,12 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>4.12.0</version>
+            <version>${okhttp3.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>logging-interceptor</artifactId>
-            <version>4.12.0</version>
+            <version>${okhttp3.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -78,6 +78,7 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.10.3</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
