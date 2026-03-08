@@ -27,26 +27,54 @@
  */
 package com.amihaiemil.web.evatr;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import java.util.Arrays;
+
 /**
- * Library entry point.
+ * Unit tests for {@link CachedEvatrSupportApi}.
  * @author Mihai Andronache (amihaiemil@gmail.com)
  * @version $Id$
- * @since 0.0.1
+ * @since 0.0.4
  */
-public final class RestfulEvatrApi implements EvatrApi {
-    private final EvatrSupportApi supportApi = new CachedEvatrSupportApi(
-        new RestfulEvatrSupportApi()
-    );
+final class CachedEvatrSupportApiTest {
 
-    private final EvatrVatApi vatApi = new RestfulEvatrVatApi(this.supportApi);
-
-    @Override
-    public EvatrSupportApi supportApi() {
-        return this.supportApi;
+    @Test
+    void cachesCountries() throws Exception {
+        final EvatrSupportApi original = Mockito.mock(EvatrSupportApi.class);
+        Mockito.when(original.supportedCountries()).thenReturn(
+            Arrays.asList(Mockito.mock(EvatrCountry.class))
+        );
+        final EvatrSupportApi cached = new CachedEvatrSupportApi(original);
+        MatcherAssert.assertThat(
+            cached.supportedCountries().size(),
+            Matchers.is(1)
+        );
+        MatcherAssert.assertThat(
+            cached.supportedCountries().size(),
+            Matchers.is(1)
+        );
+        Mockito.verify(original, Mockito.times(1)).supportedCountries();
     }
 
-    @Override
-    public EvatrVatApi vatApi() {
-        return this.vatApi;
+    @Test
+    void cachesMessages() throws Exception {
+        final EvatrSupportApi original = Mockito.mock(EvatrSupportApi.class);
+        Mockito.when(original.evatrMessages()).thenReturn(
+            Arrays.asList(Mockito.mock(EvatrMessage.class))
+        );
+        final EvatrSupportApi cached = new CachedEvatrSupportApi(original);
+        MatcherAssert.assertThat(
+            cached.evatrMessages().size(),
+            Matchers.is(1)
+        );
+        MatcherAssert.assertThat(
+            cached.evatrMessages().size(),
+            Matchers.is(1)
+        );
+        Mockito.verify(original, Mockito.times(1)).evatrMessages();
     }
 }

@@ -27,26 +27,38 @@
  */
 package com.amihaiemil.web.evatr;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Library entry point.
+ * Caching decorator for Evatr Support API.
  * @author Mihai Andronache (amihaiemil@gmail.com)
  * @version $Id$
- * @since 0.0.1
+ * @since 0.0.4
  */
-public final class RestfulEvatrApi implements EvatrApi {
-    private final EvatrSupportApi supportApi = new CachedEvatrSupportApi(
-        new RestfulEvatrSupportApi()
-    );
+final class CachedEvatrSupportApi implements EvatrSupportApi {
+    private final EvatrSupportApi original;
+    private final List<EvatrCountry> cachedCountries = new ArrayList<>();
+    private final List<EvatrMessage> cachedMessages = new ArrayList<>();
 
-    private final EvatrVatApi vatApi = new RestfulEvatrVatApi(this.supportApi);
-
-    @Override
-    public EvatrSupportApi supportApi() {
-        return this.supportApi;
+    CachedEvatrSupportApi(final EvatrSupportApi original) {
+        this.original = original;
     }
 
     @Override
-    public EvatrVatApi vatApi() {
-        return this.vatApi;
+    public List<EvatrCountry> supportedCountries() throws IOException {
+        if(this.cachedCountries.isEmpty()) {
+            this.cachedCountries.addAll(this.original.supportedCountries());
+        }
+        return this.cachedCountries;
+    }
+
+    @Override
+    public List<EvatrMessage> evatrMessages() throws IOException {
+        if(this.cachedMessages.isEmpty()) {
+            this.cachedMessages.addAll(this.original.evatrMessages());
+        }
+        return this.cachedMessages;
     }
 }

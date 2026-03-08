@@ -29,7 +29,7 @@ package com.amihaiemil.web.evatr;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -41,13 +41,13 @@ import java.util.List;
  * @version $Id$
  * @since 0.0.1
  */
-public final class RestfulEvatrApiTestCase {
+final class RestfulEvatrApiTest {
     private final List<String> countryCodes = Arrays.asList(
         "AT", "BE", "BG", "CY", "CZ", "DE", "DK", "EE", "EL", "ES", "FI", "FR", "HR", "HU", "IE", "IT", "LT", "LU", "LV", "MT", "NL", "PL", "PT", "RO", "SE", "SI", "SK", "XI"
     );
 
     @Test
-    public void fetchesSupportedCountries() throws IOException {
+    void fetchesSupportedCountries() throws IOException {
         final List<EvatrCountry> countries = new RestfulEvatrApi().supportApi().supportedCountries();
         countries.forEach(
             country -> MatcherAssert.assertThat(
@@ -56,7 +56,7 @@ public final class RestfulEvatrApiTestCase {
     }
 
     @Test
-    public void fetchesEvatrStatusMessages() throws IOException {
+    void fetchesEvatrStatusMessages() throws IOException {
         final List<EvatrMessage> messages = new RestfulEvatrApi().supportApi().evatrMessages();
         messages.forEach(
             message -> {
