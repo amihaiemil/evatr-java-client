@@ -133,7 +133,7 @@ final class RestfulEvatrApiTest {
         );
         MatcherAssert.assertThat(
             resp.technicalId(),
-            Matchers.not(Matchers.isEmptyOrgiNullString())
+            Matchers.not(Matchers.isEmptyOrNullString())
         );
         MatcherAssert.assertThat(
             resp.callTimeStamp(),
