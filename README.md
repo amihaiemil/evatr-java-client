@@ -13,14 +13,14 @@ To get the latest release from Maven Central, simply add the following to your `
 <dependency>
     <groupId>com.amihaiemil.web</groupId>
     <artifactId>evatr-java-client</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
 </dependency>
 ```
 
 If you use Gradle, add this to your dependencies:
 
 ```gradle
-implementation group: 'com.amihaiemil.web', name: 'evatr-java-client', version: '0.0.4'
+implementation group: 'com.amihaiemil.web', name: 'evatr-java-client', version: '0.0.5'
 ```
 
 The releases are also available on [Github Packages](https://github.com/amihaiemil/evatr-java-client/packages)!
