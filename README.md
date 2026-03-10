@@ -24,3 +24,33 @@ implementation group: 'com.amihaiemil.web', name: 'evatr-java-client', version: 
 ```
 
 The releases are also available on [Github Packages](https://github.com/amihaiemil/evatr-java-client/packages)!
+
+----
+
+# How to use it
+
+```java
+   final EvatrApi evatr = new RestfulEvatrApi(); //RestfulEvatrApi is the only entry-point in the library
+   final EvatrVatStatus response = evatr.vatApi().verifyExternalVatNumber("DE123456789", "ATU12345678");
+   System.out.println(resp);
+   /*
+       EvatrVatStatusResponse{
+           technicalId = 33f5c03f66be3345,
+           technicalStatusCode = evatr-0000,
+           callTimeStamp = 2026-03-10T09:59:40.990920910+01:00,
+           message = Die angefragte Ust-IdNr. ist zum Anfragezeitpunkt gültig.,
+           validFrom = null,
+           validTo = null,
+           companyName = ,
+           companyStreet = ,
+           companyCity = ,
+           companyZipCode = 
+       }
+    */
+
+    final EvatrSupportApi support = evatr.supportApi(); //utility Support-API from evatr
+    //...
+```
+
+We strive to handle the 4xx and 5xx responses from the Server -- ideally, you should never get an Exception.
+
