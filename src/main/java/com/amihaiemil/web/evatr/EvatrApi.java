@@ -37,7 +37,9 @@ public interface EvatrApi {
 
     /**
      * Entry point for the Support API of Evatr. You may need it
-     * for debugging/logging purposes.
+     * for debugging/logging purposes.<br><br>
+     * <b>Hint: </b>We already aggregate the Support messages in all responses you may
+     * receive from this library.
      * @return {@link EvatrSupportApi}.
      */
     EvatrSupportApi supportApi();
