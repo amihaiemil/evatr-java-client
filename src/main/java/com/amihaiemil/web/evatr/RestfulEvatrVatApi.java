@@ -31,7 +31,8 @@ import com.amihaiemil.web.openapi.evatr.UstIdNrBestaetigungsabfrageApi;
 import com.amihaiemil.web.openapi.evatr.invoker.ApiException;
 import com.amihaiemil.web.openapi.evatr.model.BestaetigungsabfrageDto;
 import com.amihaiemil.web.openapi.evatr.model.BestaetigungsantwortDto;
-
+import com.amihaiemil.web.openapi.evatr.model.ErrorantwortDto;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.List;
 
@@ -53,8 +54,14 @@ final class RestfulEvatrVatApi implements EvatrVatApi {
      */
     private final UstIdNrBestaetigungsabfrageApi ustIdApi = new UstIdNrBestaetigungsabfrageApi();
 
-    RestfulEvatrVatApi(final EvatrSupportApi supportApi) {
+    /**
+     * GSON instance for manual parsing of errors.
+     */
+    private final Gson gson;
+
+    RestfulEvatrVatApi(final EvatrSupportApi supportApi, final Gson gson) {
         this.supportApi = supportApi;
+        this.gson = gson;
     }
 
     @Override
@@ -64,7 +71,18 @@ final class RestfulEvatrVatApi implements EvatrVatApi {
             final BestaetigungsantwortDto antwort = this.ustIdApi.abfrageV1(new BestaetigungsabfrageDto().anfragendeUstid(caller).angefragteUstid(toVerify));
             return new EvatrVatStatusResponse(antwort, messages);
         } catch (final ApiException e) {
-            throw new IOException("ApiException when calling /v1/abfrage", e);
+            return this.handleApiException(e, messages);
+        }
+    }
+
+    private EvatrVatStatus handleApiException(final ApiException ex, final List<EvatrMessage> messages) throws IOException {
+        try {
+            return new EvatrVatStatusError(
+                this.gson.fromJson(ex.getResponseBody(), ErrorantwortDto.class),
+                messages
+            );
+        } catch (final RuntimeException unexpected) {
+            throw new IOException("ApiException when calling /v1/abfrage", ex);
         }
     }
 }

@@ -54,31 +54,51 @@
           "400": {
             "description": "status =\n<ul>\n    <li> <b>evatr-0002:</b> Mindestens eins der Pflichtfelder ist nicht besetzt.</li>\n    <li> <b>evatr-0004:</b> Die anfragende DE Ust-IdNr. ist syntaktisch falsch. Sie passt nicht in das deutsche Erzeugungsschema.</li>\n    <li> <b>evatr-0005:</b> Die angegebene angefragte Ust-IdNr. ist syntaktisch falsch.</li>\n    <li> <b>evatr-0008:</b> Die maximale Anzahl von qualifizierten Bestätigungsabfragen fuer diese Session wurde erreicht. Bitte starten Sie erneut mit einer einfachen Bestätigungsabfrage.</li>\n    <li> <b>evatr-0012:</b> Die angefrage USt-IdNr. ist syntaktisch falsch. Sie passt nicht in das Erzeugungsschema.</li>\n    <li> <b>evatr-2003:</b> Das angegebene Länderkennzeichen der angefragten USt-IdNr. ist nicht gueltig.</li>\n</ul>",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Errorantwort"
+                }
+              }
             }
           },
           "403": {
             "description": "status =\n<ul>\n    <li> <b>evatr-0006:</b> Die anfragende DE USt-IdNr. ist nicht berechtigt eine DE Ust-IdNr. anzufragen.</li>\n    <li> <b>evatr-0007:</b> Fehlerhafter Aufruf.</li>\n</ul>",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Errorantwort"
+                }
+              }
             }
           },
           "404": {
             "description": "status =\n<ul>\n    <li> <b>evatr-2001:</b> Die angefragte USt-IdNr. ist zum Anfragezeitpunkt nicht vergeben.</li>\n    <li> <b>evatr-2005:</b> Die angegebene eigene DE Ust-IdNr. ist zum Anfragezeitpunkt nicht gueltig.</li>\n</ul>",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Errorantwort"
+                }
+              }
             }
           },
           "500": {
             "description": "status =\n<ul>\n    <li> <b>evatr-2004</b> <br>\n        <b>evatr-2011</b> <br>\n        <b>evatr-3011:</b> Eine Bearbeitung Ihrer Anfrage ist zurzeit nicht möglich. Bitte versuchen Sie es später noch einmal.\n    </li>\n</ul>",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Errorantwort"
+                }
+              }
             }
           },
           "503": {
             "description": "status =\n<ul>\n    <li><b>evatr-0011</b><br>\n        <b>evatr-1001</b><br>\n        <b>evatr-1002</b><br>\n        <b>evatr-1003</b><br>\n        <b>evatr-1004:</b> Eine Bearbeitung Ihrer Anfrage ist zurzeit nicht möglich. Bitte versuchen Sie es später noch einmal.\n    </li>\n</ul>",
             "content": {
-              "application/json": {}
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Errorantwort"
+                }
+              }
             }
           }
         }
@@ -246,6 +266,27 @@
           },
           "verfuegbar": {
             "type": "boolean"
+          }
+        }
+      },
+      "Errorantwort": {
+        "required": [
+          "id",
+          "anfrageZeitpunkt",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Technische ID zur Errorantwort"
+          },
+          "anfrageZeitpunkt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string"
           }
         }
       }

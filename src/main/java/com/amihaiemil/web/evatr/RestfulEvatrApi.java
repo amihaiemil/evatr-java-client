@@ -27,6 +27,12 @@
  */
 package com.amihaiemil.web.evatr;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
+
+import java.time.OffsetDateTime;
+
 /**
  * Library entry point.
  * @author Mihai Andronache (amihaiemil@gmail.com)
@@ -34,12 +40,23 @@ package com.amihaiemil.web.evatr;
  * @since 0.0.1
  */
 public final class RestfulEvatrApi implements EvatrApi {
+    /**
+     * Global GSON instance for occasional manual parsing.
+     */
+    private final Gson gson;
+
     private final EvatrSupportApi supportApi = new CachedEvatrSupportApi(
         new RestfulEvatrSupportApi()
     );
 
-    private final EvatrVatApi vatApi = new RestfulEvatrVatApi(this.supportApi);
-
+    public RestfulEvatrApi() {
+        final JsonDeserializer<OffsetDateTime> deserializer =
+            (json, type, context) -> OffsetDateTime.parse(json.getAsString());
+        this.gson = new GsonBuilder().registerTypeHierarchyAdapter(
+            OffsetDateTime.class,
+            deserializer
+        ).create();
+    }
     @Override
     public EvatrSupportApi supportApi() {
         return this.supportApi;
@@ -47,6 +64,6 @@ public final class RestfulEvatrApi implements EvatrApi {
 
     @Override
     public EvatrVatApi vatApi() {
-        return this.vatApi;
+        return new RestfulEvatrVatApi(this.supportApi, this.gson);
     }
 }
