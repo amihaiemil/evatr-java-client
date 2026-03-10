@@ -105,8 +105,16 @@ final class EvatrVatStatusResponse implements EvatrVatStatus {
     @Override
     public String toString() {
         return "EvatrVatStatusResponse{" +
-            "response=" + this.response +
-            ",\n messages=" + this.messages +
-            '}';
+            "\n technicalId = " + this.technicalId() +
+            ",\n technicalStatusCode = " + this.technicalStatusCode() +
+            ",\n callTimeStamp = " + this.callTimeStamp() +
+            ",\n message = " + this.message() +
+            ",\n validFrom = " + this.validFrom() +
+            ",\n validTo = " + this.validTo() +
+            ",\n companyName = " + this.companyName() +
+            ",\n companyStreet = " + this.companyStreet() +
+            ",\n companyCity = " + this.companyCity() +
+            ",\n companyZipCode = " + this.companyZipCode() +
+            "\n}";
     }
 }
